@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:apps="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_popular_books"
+        android:title="@string/popular_books"
+        apps:showAsAction="collapseActionView"
+        />
+    <item
+        android:id="@+id/action_favorite"
+        android:title="@string/favourites"
+        apps:showAsAction="collapseActionView"
+        />
+</menu>

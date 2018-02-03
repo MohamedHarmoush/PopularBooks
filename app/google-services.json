@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1002193693543",
+    "firebase_url": "https://popular-books-5fee2.firebaseio.com",
+    "project_id": "popular-books-5fee2",
+    "storage_bucket": "popular-books-5fee2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1002193693543:android:f7afe76ab3643c4c",
+        "android_client_info": {
+          "package_name": "com.example.harmoush.popularbooks"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1002193693543-85l2cocpt6p72adbdsl6d93rkjdpmg5e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.harmoush.popularbooks",
+            "certificate_hash": "425deae715eb59293096885a523404fda649d3b8"
+          }
+        },
+        {
+          "client_id": "1002193693543-f0prk4aplkdec5rftrsa190rlova0qs1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBP-mkBE8dOSwfFyN0zxr-B7TFd2iDoxDI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1002193693543-f0prk4aplkdec5rftrsa190rlova0qs1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
