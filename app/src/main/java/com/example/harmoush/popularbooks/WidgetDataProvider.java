@@ -86,7 +86,7 @@ public class WidgetDataProvider implements RemoteViewsService.RemoteViewsFactory
         } catch (InterruptedException e) {
         }
         if(mBooks.size() == 0)
-            mCollection.add(String.valueOf(R.string.no_connection));
+            mCollection.add("there are no favorite books");
         else{
             for (int i = 0; i < mBooks.size(); i++) {
                 //collection.add(mBooks.get(i).bookTitle);

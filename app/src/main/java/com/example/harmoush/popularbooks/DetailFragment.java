@@ -120,7 +120,7 @@ public class DetailFragment extends Fragment {
             public void onClick(View v) {
                 Intent sendIntent = new Intent();
                 sendIntent.setAction(Intent.ACTION_SEND);
-                sendIntent.putExtra(Intent.EXTRA_TEXT, mBook.getBookTitle()+". this book is awsome!");
+                sendIntent.putExtra(Intent.EXTRA_TEXT, mBook.getBookTitle()+". this book is awesome!");
                 sendIntent.setType("text/plain");
                 startActivity(Intent.createChooser(sendIntent,"Share by"));
             }
@@ -130,7 +130,7 @@ public class DetailFragment extends Fragment {
             public void onClick(View v) {
 
                 String s = favouriteButton.getText().toString();
-                if(s.equals("MARK AS FAVOURITE")) {
+                if(s.equals("MARK AS FAVORITE")) {
                     addDataBase();
                     favouriteButton.setText(R.string.mark_unFavourite);
                 }
