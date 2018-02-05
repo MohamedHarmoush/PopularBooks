@@ -26,9 +26,5 @@ public class Contract {
         public static final String COULUMN_BOOK_POSTERIMAGE = "BookPosterImage";
         public static final String COULUMN_BOOK_AUTHOR= "BookAuthor";
 
-        public static Uri buildDirUri() {
-            return BASE_CONTENT_URI.buildUpon().appendPath("items").build();
-        }
-
     }
 }

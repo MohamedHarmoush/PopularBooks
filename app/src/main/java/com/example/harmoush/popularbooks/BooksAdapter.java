@@ -51,10 +51,7 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BooksViewHol
     }
     @Override
     public int getItemCount() {
-        if(mBooks.size() == 0)
-            return 0;
-        else
-            return mBooks.size();
+        return (mBooks != null) ? mBooks.size(): 0;
     }
 
     public class BooksViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

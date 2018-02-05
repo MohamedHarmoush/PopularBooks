@@ -57,21 +57,21 @@ public class DetailFragment extends Fragment {
                              @Nullable  Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.content_detail, container, false);
         context = getActivity();
-        App_ID = "ca-app-pub-9337464230725544/4549973935";
+        App_ID = getString(R.string.AppIDads);
         MobileAds.initialize(getActivity() ,App_ID );
         ButterKnife.bind(this,rootView);
         if(savedInstanceState !=null)
-            mBook = savedInstanceState.getParcelable("book");
+            mBook = savedInstanceState.getParcelable(getString(R.string.bookdata));
         else {
-            mBook = getActivity().getIntent().getParcelableExtra("book");
+            mBook = getActivity().getIntent().getParcelableExtra(getString(R.string.book));
             if (isNetworkAvailable()) {
                 try {
                     AdRequest adRequest = new AdRequest.Builder().build();
                     mAdView.loadAd(adRequest);
                 } catch (Exception e) {
-                    FirebaseCrash.log("add error");
+                    FirebaseCrash.log(getString(R.string.errorAdd));
                     FirebaseCrash.report(e);
-                    Toast.makeText(context, "Ads google error", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, R.string.errorAds, Toast.LENGTH_SHORT).show();
                 }
             }
         }
@@ -100,9 +100,9 @@ public class DetailFragment extends Fragment {
         final Cursor cursor = getActivity().getContentResolver().query(Contract.BookTable.CONTENT_URI,null,null,null,null);
         boolean inDB = false;
         if(cursor != null ) {
-            String BookTitle="book";
+            String BookTitle=getString(R.string.booktitle);
             for(int i =0;i<cursor.getCount();i++){
-                int idx = cursor.getColumnIndex("BookTitle");
+                int idx = cursor.getColumnIndex(getString(R.string.BookTitleColumn));
                 if (cursor.moveToNext())
                     BookTitle = cursor.getString(idx);
                 if(BookTitle.equals(mBook.getBookTitle())){
@@ -120,9 +120,9 @@ public class DetailFragment extends Fragment {
             public void onClick(View v) {
                 Intent sendIntent = new Intent();
                 sendIntent.setAction(Intent.ACTION_SEND);
-                sendIntent.putExtra(Intent.EXTRA_TEXT, mBook.getBookTitle()+". this book is awesome!");
+                sendIntent.putExtra(Intent.EXTRA_TEXT, mBook.getBookTitle()+getString(R.string.bookAwwsome));
                 sendIntent.setType("text/plain");
-                startActivity(Intent.createChooser(sendIntent,"Share by"));
+                startActivity(Intent.createChooser(sendIntent,getString(R.string.shareby)));
             }
         });
         favouriteButton.setOnClickListener(new View.OnClickListener() {
@@ -130,7 +130,7 @@ public class DetailFragment extends Fragment {
             public void onClick(View v) {
 
                 String s = favouriteButton.getText().toString();
-                if(s.equals("MARK AS FAVORITE")) {
+                if(s.equals(getString(R.string.mark__Favourite))) {
                     addDataBase();
                     favouriteButton.setText(R.string.mark_unFavourite);
                 }
@@ -155,38 +155,19 @@ public class DetailFragment extends Fragment {
 
         Uri uri = getActivity().getContentResolver().insert(Contract.BookTable.CONTENT_URI, contentValues);
     }
-  /*  @OnClick(R.id.btn_share)
-    public void onClick(Button button) {
-            Intent sendIntent = new Intent();
-            sendIntent.setAction(Intent.ACTION_SEND);
-            sendIntent.putExtra(Intent.EXTRA_TEXT, mBook.getBookTitle()+". this book is awsome!");
-            sendIntent.setType("text/plain");
-            startActivity(Intent.createChooser(sendIntent,"Share by"));
-        }
-    @OnClick(R.id.btn_favourite)
-    public void setFavouriteButton(Button button) {
-        String s = favouriteButton.getText().toString();
-        if(s.equals("MARK AS FAVOURITE")) {
-            addDataBase();
-            button.setText(R.string.mark_unFavourite);
-        } else {
-            deleteDataBase();
-            button.setText(R.string.mark_unFavourite);
-        }
-    }*/
     public void deleteDataBase() {
         getActivity().getContentResolver().delete(Contract.BookTable.CONTENT_URI, mBook.getBookId(), null);
     }
     @Override
     public void onSaveInstanceState(Bundle outState) {
-        outState.putParcelable("book", mBook);
+        outState.putParcelable(getString(R.string.bookdata), mBook);
         super.onSaveInstanceState(outState);
     }
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         if(savedInstanceState !=null)
-            mBook  = savedInstanceState.getParcelable("book");
+            mBook  = savedInstanceState.getParcelable(getString(R.string.bookdata));
     }
     public boolean isNetworkAvailable() {
         ConnectivityManager connectivityManager = (ConnectivityManager) getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
