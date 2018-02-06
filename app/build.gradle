@@ -4,9 +4,9 @@ def GOOGLE_BOOKS_API_KEY = GoogleBooksApiKey ?: '"Google Books APi Key error"'
 android {
     signingConfigs {
         config {
-            keyAlias 'key0'
+            keyAlias 'mohamed'
             keyPassword '0123456789'
-            storeFile file('D:/Mohamed/Shahen and peso/PopularBooks/mykeystore.jks')
+            storeFile file("$rootDir/keystore.jks")
             storePassword '0123456789'
         }
     }
