@@ -64,8 +64,7 @@ import butterknife.ButterKnife;
 
 public class MainActivityFragment extends Fragment implements BooksAdapter.ListItemClickListener, LoaderManager.LoaderCallbacks<Cursor> {
 
-    public MainActivityFragment() {
-    }
+
 
     private View root;
     final static String BASIC_API_URL = "https://www.googleapis.com/books/v1/volumes?q=";
@@ -124,13 +123,25 @@ public class MainActivityFragment extends Fragment implements BooksAdapter.ListI
         return true;
     }
 
-    @Override
+  /*  @Override
     public void onResume() {
         super.onResume();
         if (!isNetworkAvailable()) {
             offlineMode();
 
         }
+    }*/
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        outState.putParcelableArrayList(getString(R.string.datakey), mBooks);
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        if (savedInstanceState != null)
+            mBooks = savedInstanceState.getParcelableArrayList(getString(R.string.datakey));
     }
 
     @Nullable
@@ -154,11 +165,11 @@ public class MainActivityFragment extends Fragment implements BooksAdapter.ListI
         Bundle b = getActivity().getIntent().getExtras();
         if (b != null) {
             String data = b.getString(getString(R.string.datakey));
-            Toast.makeText(context, data, Toast.LENGTH_SHORT).show();
+          //  Toast.makeText(context, data, Toast.LENGTH_SHORT).show();
         }
         ////////////////////////////////////////////////////
         if (savedInstanceState != null) {
-            mBooks = savedInstanceState.getParcelableArrayList(getString(R.string.bookskey));
+            mBooks = savedInstanceState.getParcelableArrayList(getString(R.string.datakey));
             adapter = new BooksAdapter(mBooks, this);
             mBooksRecyclerView.setAdapter(adapter);
         } else {
@@ -390,18 +401,6 @@ public class MainActivityFragment extends Fragment implements BooksAdapter.ListI
                 continue;;
         }
         adapter.notifyDataSetChanged();
-    }
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        outState.putParcelableArrayList(getString(R.string.datakey), mBooks);
-        super.onSaveInstanceState(outState);
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        if (savedInstanceState != null)
-            mBooks = savedInstanceState.getParcelableArrayList(getString(R.string.datakey));
     }
 
     @Override

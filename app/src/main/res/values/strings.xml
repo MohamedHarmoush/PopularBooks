@@ -62,4 +62,6 @@
     <string name="bookAwwsome">. this book is awesome!</string>
     <string name="shareby">Share by</string>
     <string name="mark__Favourite">MARK AS FAVORITE</string>
+    <string name="notification">My notification</string>
+    <string name="notificationText">Hello World!</string>
 </resources>

@@ -30,11 +30,13 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     }
 
     private void sendNotification(String body) {
+        String notification =getString(R.string.notification);
+        String notificationBody = getString(R.string.notificationText);
         NotificationCompat.Builder notificationBuilder =
                 new NotificationCompat.Builder(getApplicationContext())
                         .setSmallIcon(android.R.drawable.stat_notify_chat)
-                        .setContentTitle("My notification")
-                        .setContentText("Hello World!");
+                        .setContentTitle(notification)
+                        .setContentText(notificationBody);
         notificationBuilder.setDefaults(Notification.DEFAULT_ALL);
         NotificationManagerCompat notificationManagerCompat =  NotificationManagerCompat.from(this);
         notificationManagerCompat.notify(1,notificationBuilder.build());
