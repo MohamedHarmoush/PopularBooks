@@ -122,15 +122,6 @@ public class MainActivityFragment extends Fragment implements BooksAdapter.ListI
             offlineMode();
         return true;
     }
-
-  /*  @Override
-    public void onResume() {
-        super.onResume();
-        if (!isNetworkAvailable()) {
-            offlineMode();
-
-        }
-    }*/
     @Override
     public void onSaveInstanceState(Bundle outState) {
         outState.putParcelableArrayList(getString(R.string.datakey), mBooks);
@@ -270,66 +261,7 @@ public class MainActivityFragment extends Fragment implements BooksAdapter.ListI
                     public void onCompleted(Exception e, JsonObject result) {
                         // do stuff with the result or error
                         if (e == null) {
-                            /*JsonArray jsonArray = result.getAsJsonArray(getString(R.string.items));
-                            for (int i = 0; i < jsonArray.size(); i++) {
-                                JsonObject bookJsonObject = jsonArray.get(i).getAsJsonObject();
-                                String bookId, title, publishedDate, description, imageLink;
-                                if (bookJsonObject.has(getString(R.string.id)))
-                                    bookId = bookJsonObject.get(getString(R.string.id)).getAsString().replace("\"", "");
-                                else
-                                    bookId = "";
-                                JsonObject volumeInfo;
-                                if (bookJsonObject.has(getString(R.string.volumeInfo))) {
-                                    volumeInfo = bookJsonObject.get(getString(R.string.volumeInfo)).getAsJsonObject();
-                                    if (volumeInfo.has(getString(R.string.title)))
-                                        title = volumeInfo.get(getString(R.string.title)).getAsString().replace("\"", "");
-                                    else
-                                        title = "";
-                                    String bookAuthors = "";
-                                    if (volumeInfo.has(getString(R.string.authors))) {
-                                        JsonArray authors = volumeInfo.get(getString(R.string.authors)).getAsJsonArray();
-                                        for (int j = 0; j < authors.size(); j++) {
-                                            String au = authors.get(j).getAsString().replace("\"", "");
-                                            if (j + 1 < authors.size())
-                                                bookAuthors += au + getString(com.example.harmoush.popularbooks.R.string.and);
-                                            else
-                                                bookAuthors += au;
-                                        }
-                                    } else if (volumeInfo.has(getString(R.string.publisher))) {
-                                        String au = volumeInfo.get(getString(R.string.publisher)).getAsString().replace("\"", "");
-                                        bookAuthors += au;
-                                    }
-                                    if (volumeInfo.has(getString(R.string.publishedDate)))
-                                        publishedDate = volumeInfo.get(getString(R.string.publishedDate)).getAsString().replace("\"", "");
-                                    else
-                                        publishedDate = "";
-                                    if (volumeInfo.has(getString(R.string.description)))
-                                        description = volumeInfo.get(getString(R.string.description)).getAsString().replace("\"", "");
-                                    else
-                                        description = "";
-                                    if (volumeInfo.has(getString(R.string.imageLinks))) {
-
-                                        JsonObject imageLinks = volumeInfo.get(getString(R.string.imageLinks)).getAsJsonObject();
-                                        if (imageLinks.has(getString(R.string.thumbnail)))
-                                            imageLink = imageLinks.get(getString(R.string.thumbnail)).getAsString().replace("\"", "");
-                                        else if (imageLinks.has(getString(R.string.medium)))
-                                            imageLink = imageLinks.get(getString(R.string.medium)).getAsString().replace("\"", "");
-                                        else if (imageLinks.has(getString(R.string.smallThumbnail)))
-                                            imageLink = imageLinks.get(getString(R.string.smallThumbnail)).getAsString().replace("\"", "");
-                                        else if (imageLinks.has(getString(R.string.large)))
-                                            imageLink = imageLinks.get(getString(R.string.large)).getAsString().replace("\"", "");
-                                        else
-                                            imageLink = "";
-                                    } else
-                                        imageLink = "";
-                                    if (imageLink == "")
-                                        continue;
-                                    mBooks.add(new Book(title, publishedDate, description, bookAuthors, imageLink, bookId));
-                                } else
-                                    continue;
-                            }*/
                             parseJsonObject(result);
-
                             adapter.notifyDataSetChanged();
                         }
 
